@@ -53,7 +53,8 @@ public class TellerEvents implements Listener{
                 
                
                 if(p.isOnline()) {
-                	p.sendMessage("§2You have paid a bank fee of §a" + MCTrust.currencyType + bankFee);
+                	String bankFeeMsg = ConfigValues.bank_fee.replace("%amount%", MCTrust.currencyType + bankFee);
+                	p.sendMessage(bankFeeMsg);
                 }
                 
                 
@@ -170,12 +171,12 @@ public class TellerEvents implements Listener{
 				PlayerBuffers.takeFromBuffer(p, 10);
 			}else if(account.getBuffer() - 64 >= 0 && clickedName.contains(ConfigValues.take_max)) {
 				PlayerBuffers.takeFromBuffer(p, 64);
-			}else if(clickedName.contains("Finish Transaction")) {
+			}else if(clickedName.contains(ConfigValues.finish_transaction)) {
 				//TODO Fix ugliness of this
 				
-				String transferTo = ConfigValues.transfer_message.replace("%player%", targetName).replace("%amount%", 
+				String transferTo = ConfigValues.transfer_message.replace("%player%", targetName).replace("%amount%", MCTrust.currencyType +
 						String.valueOf(PlayerBuffers.getBuffer(p)));
-				String transferFrom = ConfigValues.transfer_message_from.replace("%player%", p.getName()).replace("%amount%", 
+				String transferFrom = ConfigValues.transfer_message_from.replace("%player%", p.getName()).replace("%amount%", MCTrust.currencyType +
 						String.valueOf(PlayerBuffers.getBuffer(p)));;
 						
 				//Do the transaction
@@ -209,15 +210,15 @@ public class TellerEvents implements Listener{
 			
 			
 			//Disable taking items from teller
-			if(clickedName.contains("Withdraw Money")) {
+			if(clickedName.contains(ConfigValues.withdraw_money)) {
 				account.openWithdraw();
 				e.setCancelled(true);
-			}else if(clickedName.contains("Deposit Money")) {
+			}else if(clickedName.contains(ConfigValues.deposit_money)) {
 				account.openDeposit();
 				e.setCancelled(true);			
-			}else if(clickedName.contains("Transfer to Other Player")) {
+			}else if(clickedName.contains(ConfigValues.transfer_to_player)) {
 				openTransferInventory(p);
-			}else if(clickedName.contains("Withdraw a Cheque")) {
+			}else if(clickedName.contains(ConfigValues.withdraw_a_cheque)) {
 				if(e.getCursor().getItemMeta() != null && e.getCursor().getItemMeta().getDisplayName().contains("Cheque")) {
 					
 					//Fraud cheque check
@@ -267,7 +268,7 @@ public class TellerEvents implements Listener{
 				account.takeFromBuffer(10);
 			}else if(account.getBuffer() - 64 >= 0 && clickedName.contains(ConfigValues.take_max)) {
 				account.takeFromBuffer(64);
-			}else if(clickedName.contains("Finish Transaction")) {
+			}else if(clickedName.contains(ConfigValues.finish_transaction)) {
 				econ.withdrawPlayer(p, account.getBuffer());
 				p.getInventory().addItem(Dollar.createDollar(account.getBuffer()));
 				oldBuffer = 0;
@@ -309,7 +310,7 @@ public class TellerEvents implements Listener{
 				account.takeFromBuffer(10);
 			}else if(account.getBuffer() - 64 >= 0 && clickedName.contains(ConfigValues.take_max)) {
 				account.takeFromBuffer(64);
-			}else if(clickedName.contains("Finish Transaction")) {
+			}else if(clickedName.contains(ConfigValues.finish_transaction)) {
 				econ.depositPlayer(p, account.getBuffer());
 				p.getInventory().removeItem(Dollar.createDollar(account.getBuffer()));
 				oldBuffer = 0;

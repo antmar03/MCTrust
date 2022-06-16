@@ -32,16 +32,17 @@ public class AccountGUI {
 	
 	//Secondary Transfer GUI, theres probably a better way to do this but oh well
 	public Inventory createTransferGUI(String playerName) {
-		Inventory inv = Bukkit.createInventory(p, 18, "Transfer to " + playerName);
+		Inventory inv = Bukkit.createInventory(p, 18, playerName);
 		ItemStack balance = new ItemStack(Material.KELP);
 		ItemMeta balanceMeta = balance.getItemMeta();
-		balanceMeta.setDisplayName("§2Balance: " + MCTrust.currencyType + econ.getBalance(p));
+		balanceMeta.setDisplayName("§2" + ConfigValues.balance + ": " + MCTrust.currencyType + econ.getBalance(p));
 		balance.setItemMeta(balanceMeta);
 		
 		ItemStack withdraw = new ItemStack(Material.GREEN_CANDLE);
 		ItemMeta withdrawwMeta = balance.getItemMeta();
-		withdrawwMeta.setDisplayName("§aFinish Transaction");
+		withdrawwMeta.setDisplayName("§a" + ConfigValues.finish_transaction);
 		withdraw.setItemMeta(withdrawwMeta);
+		
 		
 		ItemStack withdrawlAmount = new ItemStack(Material.PAPER);
 		ItemMeta withdrawMeta = withdrawlAmount.getItemMeta();
@@ -53,33 +54,33 @@ public class AccountGUI {
 		
 		ItemStack addOne = new ItemStack(Material.GREEN_STAINED_GLASS_PANE);
 		ItemMeta addOneMeta = addOne.getItemMeta();
-		addOneMeta.setDisplayName("§a Add One");
+		addOneMeta.setDisplayName("§a" + ConfigValues.add_one);
 		addOne.setItemMeta(addOneMeta);
 		
 		ItemStack addTen = new ItemStack(Material.GREEN_STAINED_GLASS_PANE, 10);
 		ItemMeta addTenMeta = addTen.getItemMeta();
-		addTenMeta.setDisplayName("§a Add Ten");
+		addTenMeta.setDisplayName("§a" + ConfigValues.add_ten);
 		addTen.setItemMeta(addTenMeta);
 		
 		ItemStack addMax = new ItemStack(Material.GREEN_STAINED_GLASS_PANE, 64);
 		ItemMeta addMaxMeta = addMax.getItemMeta();
-		addMaxMeta.setDisplayName("§a Add Max");
+		addMaxMeta.setDisplayName("§a" + ConfigValues.add_max);
 		addMax.setItemMeta(addMaxMeta);
 		
 		
 		ItemStack takeOne = new ItemStack(Material.RED_STAINED_GLASS_PANE);
 		ItemMeta takeOneMeta = takeOne.getItemMeta();
-		takeOneMeta.setDisplayName("§c Take One");
+		takeOneMeta.setDisplayName("§c" + ConfigValues.take_one);
 		takeOne.setItemMeta(takeOneMeta);
 		
 		ItemStack takeTen = new ItemStack(Material.RED_STAINED_GLASS_PANE, 10);
 		ItemMeta takeTenMeta = takeTen.getItemMeta();
-		takeTenMeta.setDisplayName("§c Take Ten");
+		takeTenMeta.setDisplayName("§c" + ConfigValues.take_ten);
 		takeTen.setItemMeta(takeTenMeta);
 		
 		ItemStack takeMax = new ItemStack(Material.RED_STAINED_GLASS_PANE, 64);
 		ItemMeta takeMaxMeta = takeMax.getItemMeta();
-		takeMaxMeta.setDisplayName("§c Take Max");
+		takeMaxMeta.setDisplayName("§c" + ConfigValues.take_max);
 		takeMax.setItemMeta(takeMaxMeta);
 		
 		
@@ -103,49 +104,51 @@ public class AccountGUI {
 		Inventory inv = Bukkit.createInventory(p, 18, name);
 		ItemStack balance = new ItemStack(Material.KELP);
 		ItemMeta balanceMeta = balance.getItemMeta();
-		balanceMeta.setDisplayName("§2Balance: " + MCTrust.currencyType + econ.getBalance(p));
+		balanceMeta.setDisplayName("§2" + ConfigValues.balance + ": " + MCTrust.currencyType + econ.getBalance(p));
 		balance.setItemMeta(balanceMeta);
 		
 		ItemStack withdraw = new ItemStack(Material.GREEN_CANDLE);
 		ItemMeta withdrawwMeta = balance.getItemMeta();
-		withdrawwMeta.setDisplayName("§aFinish Transaction");
+		withdrawwMeta.setDisplayName("§a" + ConfigValues.finish_transaction);
 		withdraw.setItemMeta(withdrawwMeta);
 		
 		ItemStack withdrawlAmount = new ItemStack(Material.PAPER);
 		ItemMeta withdrawMeta = withdrawlAmount.getItemMeta();
-		withdrawMeta.setDisplayName("§2Amount To " + name +" " + MCTrust.currencyType + withdrawlBuffer);
+		withdrawMeta.setDisplayName("§2" + ConfigValues.amount + " To " + name + " " + MCTrust.currencyType + withdrawlBuffer);
 		withdrawlAmount.setItemMeta(withdrawMeta);
+		
 		
 		ItemStack addOne = new ItemStack(Material.GREEN_STAINED_GLASS_PANE);
 		ItemMeta addOneMeta = addOne.getItemMeta();
-		addOneMeta.setDisplayName("§a Add One");
+		addOneMeta.setDisplayName("§a" + ConfigValues.add_one);
 		addOne.setItemMeta(addOneMeta);
 		
 		ItemStack addTen = new ItemStack(Material.GREEN_STAINED_GLASS_PANE, 10);
 		ItemMeta addTenMeta = addTen.getItemMeta();
-		addTenMeta.setDisplayName("§a Add Ten");
+		addTenMeta.setDisplayName("§a" + ConfigValues.add_ten);
 		addTen.setItemMeta(addTenMeta);
 		
 		ItemStack addMax = new ItemStack(Material.GREEN_STAINED_GLASS_PANE, 64);
 		ItemMeta addMaxMeta = addMax.getItemMeta();
-		addMaxMeta.setDisplayName("§a Add Max");
+		addMaxMeta.setDisplayName("§a" + ConfigValues.add_max);
 		addMax.setItemMeta(addMaxMeta);
 		
 		
 		ItemStack takeOne = new ItemStack(Material.RED_STAINED_GLASS_PANE);
 		ItemMeta takeOneMeta = takeOne.getItemMeta();
-		takeOneMeta.setDisplayName("§c Take One");
+		takeOneMeta.setDisplayName("§c" + ConfigValues.take_one);
 		takeOne.setItemMeta(takeOneMeta);
 		
 		ItemStack takeTen = new ItemStack(Material.RED_STAINED_GLASS_PANE, 10);
 		ItemMeta takeTenMeta = takeTen.getItemMeta();
-		takeTenMeta.setDisplayName("§c Take Ten");
+		takeTenMeta.setDisplayName("§c" + ConfigValues.take_ten);
 		takeTen.setItemMeta(takeTenMeta);
 		
 		ItemStack takeMax = new ItemStack(Material.RED_STAINED_GLASS_PANE, 64);
 		ItemMeta takeMaxMeta = takeMax.getItemMeta();
-		takeMaxMeta.setDisplayName("§c Take Max");
+		takeMaxMeta.setDisplayName("§c" + ConfigValues.take_max);
 		takeMax.setItemMeta(takeMaxMeta);
+		
 		
 		//If transfer menu, add transfer player
 		if(name.equals("Transfer")) {
@@ -177,27 +180,27 @@ public class AccountGUI {
 		
 		ItemStack balance = new ItemStack(Material.KELP);
 		ItemMeta balanceMeta = balance.getItemMeta();
-		balanceMeta.setDisplayName("§2Balance: " + MCTrust.currencyType + econ.getBalance(p));
+		balanceMeta.setDisplayName("§2" + ConfigValues.balance + ": " + MCTrust.currencyType + econ.getBalance(p));
 		balance.setItemMeta(balanceMeta);
 		
 		ItemStack withdraw = new ItemStack(Material.GREEN_DYE);
 		ItemMeta withdrawMeta = withdraw.getItemMeta();
-		withdrawMeta.setDisplayName("§aWithdraw Money");
+		withdrawMeta.setDisplayName("§a" + ConfigValues.withdraw_money);
 		withdraw.setItemMeta(withdrawMeta);
 		
 		ItemStack deposit = new ItemStack(Material.RED_DYE);
 		ItemMeta depositMeta = deposit.getItemMeta();
-		depositMeta.setDisplayName("§cDeposit Money");
+		depositMeta.setDisplayName("§c" + ConfigValues.deposit_money);
 		deposit.setItemMeta(depositMeta);
 		
 		ItemStack transfer = new ItemStack(Material.BOOK);
 		ItemMeta transferMeta = transfer.getItemMeta();
-		transferMeta.setDisplayName("§6Transfer to Other Player");
+		transferMeta.setDisplayName("§6" + ConfigValues.transfer_to_player);
 		transfer.setItemMeta(transferMeta);
 		
 		ItemStack withdrawcheque = new ItemStack(Material.PAPER);
 		ItemMeta withdrawChequeMeta = transfer.getItemMeta();
-		withdrawChequeMeta.setDisplayName("§fWithdraw a Cheque");
+		withdrawChequeMeta.setDisplayName("§f" + ConfigValues.withdraw_a_cheque);
 		withdrawcheque.setItemMeta(withdrawChequeMeta);
 		
 		Inventory inv = Bukkit.createInventory(p, 36, p.getName() + "'s Account");

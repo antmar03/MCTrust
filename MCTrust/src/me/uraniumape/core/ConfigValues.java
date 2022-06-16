@@ -57,6 +57,10 @@ public class ConfigValues {
 		FileConfiguration config = MCTrust.getInstance().getConfig();
 		
 		//Messages
+		bank_teller = config.getString("messages.bank-teller");
+		atm = config.getString("messages.atm");
+		cheque = config.getString("messages.cheque");
+		withdraw_at_bank = config.getString("messages.withdraw-at-bank");
 		permission_message = config.getString("messages.permission-message");
 		withdraw_message = config.getString("messages.withdraw-message");
 		deposit_message = config.getString("messages.deposit-message");

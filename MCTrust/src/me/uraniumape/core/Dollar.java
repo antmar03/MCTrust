@@ -11,7 +11,7 @@ public class Dollar {
 		ItemStack dollar = new ItemStack(Material.KELP, amount);
 		ItemMeta dollarMeta = dollar.getItemMeta();
 		
-		dollarMeta.setDisplayName("§2Paper Note");
+		dollarMeta.setDisplayName("§2" + ConfigValues.currency_name);
 		
 		dollar.setItemMeta(dollarMeta);
 		

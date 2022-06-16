@@ -19,6 +19,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import me.uraniumape.core.ConfigValues;
 import me.uraniumape.core.Dollar;
 import me.uraniumape.core.MCTrust;
 import me.uraniumape.core.StorageClass;
@@ -34,7 +35,7 @@ public class PurchaseEvents implements Listener{
 		
 		List<String> priceLore = new ArrayList<String>();
 		ItemMeta itemMeta = item.getItemMeta();
-		priceLore.add("Price: §2" + MCTrust.currencyType + price);
+		priceLore.add(ConfigValues.price + "§2" + MCTrust.currencyType + price);
 		itemMeta.setLore(priceLore);
 		item.setItemMeta(itemMeta);
 		
@@ -43,21 +44,21 @@ public class PurchaseEvents implements Listener{
 		ItemMeta shopIDMeta = shopID.getItemMeta();
 		List<String> lore = new ArrayList<String>();
 		lore.add(shopUUID);
-		shopIDMeta.setDisplayName("Shop ID");
+		shopIDMeta.setDisplayName(ConfigValues.shop_id);
 		shopIDMeta.setLore(lore);
 		shopID.setItemMeta(shopIDMeta);
 		
 		//Pay with cash item
 		ItemStack payWithCash = new ItemStack(Material.KELP);
 		ItemMeta payWithCashMeta = payWithCash.getItemMeta();
-		payWithCashMeta.setDisplayName("§2Pay with Cash");
+		payWithCashMeta.setDisplayName("§2" + ConfigValues.pay_with_cash);
 		payWithCash.setItemMeta(payWithCashMeta);
 		
 		
 		//Pay with debit item
 		ItemStack payWithDebit = new ItemStack(Material.PAPER);
 		ItemMeta payWithDebitMeta = payWithDebit.getItemMeta();
-		payWithDebitMeta.setDisplayName("§2Pay with Debit");
+		payWithDebitMeta.setDisplayName("§2" + ConfigValues.pay_with_debit);
 		payWithDebit.setItemMeta(payWithDebitMeta);
 		
 
@@ -82,22 +83,28 @@ public class PurchaseEvents implements Listener{
 			
 			//Long ugly string to get the price
 			int price = Integer.parseInt(saleItem.getItemMeta().getLore().get(0).split(" ")[1].substring(3));
-			if(clickedName.contains("Pay with Debit")) {
+			//Long ugly string to get message
+			String purchaseMsg = ConfigValues.msg_color_positive + (ConfigValues.purchase_message.replace("%item%", saleItem.getItemMeta().getDisplayName())
+					.replace("%amount%", MCTrust.currencyType + String.valueOf(price)));
+			
+			if(clickedName.contains(ConfigValues.pay_with_debit)) {
 				if(econ.getBalance(p) >= price) {
+					
+
+					
 					econ.withdrawPlayer(p, price);
 					p.getInventory().addItem(saleItem);
 					e.setCancelled(true);
-					p.sendMessage("§2You have just purchased " + saleItem.getItemMeta().getDisplayName() + " for "
-							+ MCTrust.currencyType + price + " from your bank account" );
+					p.sendMessage(purchaseMsg);
 				}else{
-					p.sendMessage("§2Not enough funds in your bank!");
+					p.sendMessage(ConfigValues.msg_color_negative + ConfigValues.not_enough_bank);
 				}
 			
 				
 				
 				e.setCancelled(true);
 				
-			}else if(clickedName.contains("Pay with Cash")) {
+			}else if(clickedName.contains(ConfigValues.pay_with_cash)) {
 				
 				//If the player has enough cash in their inventory
 				if(p.getInventory().containsAtLeast(Dollar.createDollar(1), price)) {
@@ -112,11 +119,10 @@ public class PurchaseEvents implements Listener{
 					}
 					
 					
-					p.sendMessage("§2You have just purchased " + itemName + " §2for " + MCTrust.currencyType +
-							+ price + " with cash" );
+					p.sendMessage(purchaseMsg);
 					
 				}else{
-					p.sendMessage("§2Not enough cash on hand!");
+					p.sendMessage(ConfigValues.msg_color_negative + ConfigValues.not_enough_cash);
 				}
 				
 				e.setCancelled(true);
@@ -133,7 +139,7 @@ public class PurchaseEvents implements Listener{
 			Block b = e.getClickedBlock();
 			if(b.getState() instanceof Sign) {
 				Sign s = (Sign)b.getState();
-				if(s.getLine(0).contains("[Vendor]")) {
+				if(s.getLine(0).contains(ConfigValues.shop_name)) {
 					int price = 0;
 					ItemStack item = null;
 					Location loc = b.getLocation();

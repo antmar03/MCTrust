@@ -19,6 +19,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import me.uraniumape.core.ConfigValues;
 import me.uraniumape.core.MCTrust;
 import me.uraniumape.core.SignCreator;
 import me.uraniumape.core.StorageClass;
@@ -37,7 +38,7 @@ public class RegisterEvents implements Listener{
 		
 		ItemStack storeID = new ItemStack(Material.PAINTING);
 		ItemMeta storeIDMeta = storeID.getItemMeta();
-		storeIDMeta.setDisplayName("Store ID");
+		storeIDMeta.setDisplayName(ConfigValues.shop_id);
 		List<String> storeIDLore = new ArrayList<String>();
 		storeIDLore.add(StoreUUID);
 		storeIDMeta.setLore(storeIDLore);
@@ -51,38 +52,38 @@ public class RegisterEvents implements Listener{
 		
 		ItemStack withdrawlAmount = new ItemStack(Material.PAPER);
 		ItemMeta withdrawMeta = withdrawlAmount.getItemMeta();
-		withdrawMeta.setDisplayName("§2Amount" + " " + MCTrust.currencyType + PlayerBuffers.getBuffer(p));
+		withdrawMeta.setDisplayName(ConfigValues.msg_color_positive + ConfigValues.amount + " " + MCTrust.currencyType + PlayerBuffers.getBuffer(p));
 		withdrawlAmount.setItemMeta(withdrawMeta);
 		
 		ItemStack addOne = new ItemStack(Material.GREEN_STAINED_GLASS_PANE);
 		ItemMeta addOneMeta = addOne.getItemMeta();
-		addOneMeta.setDisplayName("§a Add One");
+		addOneMeta.setDisplayName("§a" + ConfigValues.add_one);
 		addOne.setItemMeta(addOneMeta);
 		
 		ItemStack addTen = new ItemStack(Material.GREEN_STAINED_GLASS_PANE, 10);
 		ItemMeta addTenMeta = addTen.getItemMeta();
-		addTenMeta.setDisplayName("§a Add Ten");
+		addTenMeta.setDisplayName("§a" + ConfigValues.add_ten);
 		addTen.setItemMeta(addTenMeta);
 		
 		ItemStack addMax = new ItemStack(Material.GREEN_STAINED_GLASS_PANE, 64);
 		ItemMeta addMaxMeta = addMax.getItemMeta();
-		addMaxMeta.setDisplayName("§a Add Max");
+		addMaxMeta.setDisplayName("§a" + ConfigValues.add_max);
 		addMax.setItemMeta(addMaxMeta);
 		
 		
 		ItemStack takeOne = new ItemStack(Material.RED_STAINED_GLASS_PANE);
 		ItemMeta takeOneMeta = takeOne.getItemMeta();
-		takeOneMeta.setDisplayName("§c Take One");
+		takeOneMeta.setDisplayName("§c" + ConfigValues.take_one);
 		takeOne.setItemMeta(takeOneMeta);
 		
 		ItemStack takeTen = new ItemStack(Material.RED_STAINED_GLASS_PANE, 10);
 		ItemMeta takeTenMeta = takeTen.getItemMeta();
-		takeTenMeta.setDisplayName("§c Take Ten");
+		takeTenMeta.setDisplayName("§c" + ConfigValues.take_ten);
 		takeTen.setItemMeta(takeTenMeta);
 		
 		ItemStack takeMax = new ItemStack(Material.RED_STAINED_GLASS_PANE, 64);
 		ItemMeta takeMaxMeta = takeMax.getItemMeta();
-		takeMaxMeta.setDisplayName("§c Take Max");
+		takeMaxMeta.setDisplayName("§c" + ConfigValues.take_max);
 		takeMax.setItemMeta(takeMaxMeta);
 		
 		

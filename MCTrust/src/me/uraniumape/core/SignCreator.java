@@ -62,7 +62,7 @@ public class SignCreator {
 		//The shop ID Item to identify the shop
 		ItemStack shopID = new ItemStack(Material.PAINTING);
 		ItemMeta shopIDMeta = shopID.getItemMeta();
-		shopIDMeta.setDisplayName("§7Shop ID");
+		shopIDMeta.setDisplayName(ConfigValues.shop_id);
 		List<String> shopIDLore = new ArrayList<String>();
 		shopIDLore.add(shopUUID.toString());
 		shopIDMeta.setLore(shopIDLore);

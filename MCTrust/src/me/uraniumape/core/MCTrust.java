@@ -24,7 +24,7 @@ public class MCTrust extends JavaPlugin{
     public void onEnable() {
 	   
 	   saveDefaultConfig();
-	   ConfigValues.initializeValues();
+
 	   
 	   if (!setupEconomy() ) {
             Bukkit.getLogger().severe(String.format("[%s] - Disabled due to no Vault dependency found!", getDescription().getName()));
@@ -42,7 +42,7 @@ public class MCTrust extends JavaPlugin{
 	   loadStorage();
 	   
 	   currencyType = econ.currencyNameSingular();
-
+	   ConfigValues.initializeValues();
    	}
 	
    	

@@ -19,11 +19,11 @@ public class BankCard {
 	public void writeCheque(int amount) {
 		ItemStack cheque = new ItemStack(Material.FILLED_MAP);
 		ItemMeta chequeMeta = cheque.getItemMeta();
-		chequeMeta.setDisplayName("§9Cheque");
+		chequeMeta.setDisplayName("§9" + ConfigValues.cheque);
 		
 		List<String> lore = new ArrayList<String>();
-		lore.add("§2Withdraw this at a bank");
-		lore.add("§2Amount: " + MCTrust.currencyType + amount);
+		lore.add("§2" + ConfigValues.withdraw_at_bank);
+		lore.add("§2" + ConfigValues.amount + MCTrust.currencyType + amount);
 		
 		chequeMeta.setLore(lore);
 		
