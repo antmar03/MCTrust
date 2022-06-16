@@ -1,0 +1,15 @@
+name: MCTrust
+main: me.uraniumape.core.MCTrust
+version: 1.0
+api-version: 1.18
+soft-depend: [EssentialsX]
+commands:
+  bank-admin:
+    description: "Sets players home"
+    usage: /<command>
+  onlinebank:
+    description: "Sets players home"
+    usage: /<command>
+
+  
+

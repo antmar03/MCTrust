@@ -1,0 +1,55 @@
+# Features to enable or disable
+features:
+  enable-onlinebank: true
+  enable-bank-fee: true
+  bank-fee-interval: 3600
+  bank-fee: 25
+
+# Color Settings
+colors:
+  message-color-positive: §2 #Used for transactions
+  message-color-negative: §c #Used for permissions
+  cash-color: §a
+
+#Misc Settings
+etc:
+  currency-name: Dollar
+
+#Language settings
+messages:
+  permission-message: "You do not have permission to perform this command"
+  withdraw-message: "You have withdrew %amount% from your bank account"
+  deposit-message: "You have deposited %amount% to your bank account"
+  transfer-message: "You have transfered %amount% to %player%"
+  transfer-message-from: "You have recieved %amount% from %player%"
+  purchase-message: "You have purchased %item% for %amount%"
+  bank-fee: "You have paid a bank fee of %amount%"
+  shop-name: "Vendor"
+  pay-with-cash: "Pay with Cash"
+  pay-with-debit: "Pay with Debit"
+  shop-id: "Shop ID"
+  take-one: "Take One"
+  take-ten: "Take Ten"
+  take-max: "Take Max"
+  add-one: "Add One"
+  add-ten: "Add Ten"
+  add-max: "Add Max"
+  balance: "Balance"
+  finish-transaction: "Finish transaction"
+  amount-to-withdraw: "Amount to withdraw"
+  withdraw-money: "Withdraw Money"
+  deposit-money: "Deposit Money"
+  transfer-to-player: "Transfer to Player"
+  withdraw-a-cheque: "Withdraw a Cheque"
+  bank-teller: "Bank Teller"
+  atm: "ATM"
+  cheque: "Cheque"
+  withdraw_at_bank: "Withdraw this at a bank"
+  price: "Price"
+  purchase-with-debit: "Purchase with Debit"
+  purchase-with-cash: "Purchase with Cash"
+  not-enough-cash: "Not enough cash on hand!"
+  not-enough-bank: "Not enough funds in your bank!"
+  amount: "Amount"
+  
+  
