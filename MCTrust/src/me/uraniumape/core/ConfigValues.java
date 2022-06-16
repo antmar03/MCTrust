@@ -48,6 +48,10 @@ public class ConfigValues {
 	
 	//Features
 	public static boolean enable_onlinebank;
+	public static boolean enable_bank_fee;
+	public static int bank_fee_amount;
+	public static long bank_fee_interval;
+	
 	
 	//Etc
 	public static String currency_name;
@@ -94,6 +98,9 @@ public class ConfigValues {
 		
 		//Features
 		enable_onlinebank = config.getBoolean("features.enable-onlinebank");
+		enable_bank_fee = config.getBoolean("features.enable-bank-fee");
+		bank_fee_amount = config.getInt("features.bank-fee");
+		bank_fee_interval = config.getLong("features.bank-fee-interval") * 60;
 		
 		//Colors
 		msg_color_positive = config.getString("colors.message-color-positive");

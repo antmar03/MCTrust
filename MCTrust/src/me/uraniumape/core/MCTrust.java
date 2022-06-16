@@ -16,8 +16,8 @@ public class MCTrust extends JavaPlugin{
    private static MCTrust instance;
    private StorageClass sClass;
    public static final String permissionPrefix = "mctrust";
-   public static final long bankFeeInterval = 72000; //Every hour
-   public static final double bankFee = 25;
+   public static long bankFeeInterval; //Every hour
+   public static double bankFee;
    public static String currencyType = "";
    
    @Override
@@ -43,6 +43,10 @@ public class MCTrust extends JavaPlugin{
 	   
 	   currencyType = econ.currencyNameSingular();
 	   ConfigValues.initializeValues();
+	   
+	   bankFeeInterval = ConfigValues.bank_fee_interval;
+	   bankFee = ConfigValues.bank_fee_amount;
+	   
    	}
 	
    	
